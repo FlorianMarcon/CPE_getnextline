@@ -1,0 +1,36 @@
+/*
+** EPITECH PROJECT, 2017
+** test
+** File description:
+** test
+*/
+
+#include "get_next_line.h"
+#include <criterion/criterion.h>
+#include <criterion/redirect.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int fd = -1;
+
+void	open_file(void)
+{
+	fd = open("data.txt", O_RDONLY);
+	cr_redirect_stdout();
+}
+
+void	close_file(void)
+{
+	if (fd != -1)
+		close(fd);
+}
+
+Test(get_next_line, read_line, .init = open_file, .fini = close_file)
+{
+	char *expected = "Ceci est un fichier";
+	char *got = get_next_line(fd);
+
+	cr_assert_str_eq(expected, got);
+}
