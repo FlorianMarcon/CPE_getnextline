@@ -9,8 +9,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static char *buffer = NULL;
-
 int	is_end_line(char *str)
 {
 	int i = 0;
@@ -50,6 +48,7 @@ char	*get_next_line(int fd)
 {
 	char *tmp = NULL;
 	int var = 0;
+	static char *buffer = NULL;
 
 	while (is_end_line(buffer) != 1) {
 		if ((tmp = malloc(sizeof(char)* (READ_SIZE + 1))) == NULL)
