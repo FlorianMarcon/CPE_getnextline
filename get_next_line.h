@@ -28,5 +28,4 @@ char	*get_next_line(int fd);
 
 char	*copy_extra_char(char *str);
 
-
 #endif

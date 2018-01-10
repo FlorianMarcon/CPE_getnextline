@@ -9,6 +9,41 @@
 #include <unistd.h>
 #include <stdio.h>
 
+int	my_strlen(char const *str)
+{
+	int i = 0;
+
+	if (str == NULL)
+		return (0);
+	while (*str != '\0') {
+		str++;
+		i++;
+	}
+	return (i);
+}
+char	*my_strcat(char *dest, char const *src)
+{
+	int len = my_strlen(dest) + my_strlen(src) + 1;
+	char *resultat = NULL;
+	int i = 0;
+
+	if ((resultat = malloc(sizeof(char) * len)) == NULL)
+		return (NULL);
+	len = 0;
+	if (dest != NULL) {
+		while (dest[len] != '\0') {
+			resultat[len] = dest[len];
+			len++;
+		}
+	}
+	while (src[i] != '\0' && src != NULL) {
+		resultat[len] = src[i];
+		len++;
+		i++;
+	}
+	resultat[len] = '\0';
+	return (resultat);
+}
 int	is_end_line(char *str)
 {
 	int i = 0;

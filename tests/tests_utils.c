@@ -33,4 +33,14 @@ Test(get_next_line, read_line, .init = open_file, .fini = close_file)
 	char *got = get_next_line(fd);
 
 	cr_assert_str_eq(expected, got);
+	free(got);
+	got = get_next_line(fd);
+	cr_assert_str_eq(got, "Que j'utilise pour tester mon programme");
+	free(got);
+	got = get_next_line(fd);
+	cr_assert_str_eq(got, "Ce test m'a été donné par le pdf");
+	free(got);
+	got = get_next_line(fd);
+	cr_assert_eq(got, NULL);
+
 }

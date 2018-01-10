@@ -1,4 +1,3 @@
 Ceci est un fichier
 Que j'utilise pour tester mon programme
 Ce test m'a été donné par le pdf
-oui oui je ne l'ai pas inventé
